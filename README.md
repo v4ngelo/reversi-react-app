@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Build Status
+[![Build Status](https://travis-ci.com/v4ngelo/reversi-react-app.svg?branch=master)](https://travis-ci.com/v4ngelo/reversi-react-app)
+
 ## Available Scripts
 
 In the project directory, you can run:
