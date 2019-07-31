@@ -40,3 +40,49 @@
   background-color: FireBrick;
   color: White;
 }
+
+/* Disk Properties */
+
+.disk {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  margin-left: 10%;
+  margin-top: 10%;
+}
+
+.disk-white {
+  background: #eee;
+  border: 1px solid #111;
+}
+
+.disk.black {
+  background: #111;
+}
+
+/* Square Classes */
+
+.square {
+  background: #ff8000;
+  border: 1px solid #111;
+  float: left;
+  line-height: 34px;
+  height: 40px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  width: 40px;
+  border-radius: 0;
+  max-width: 12.5%;
+}
+
+.board {
+  margin-top: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.board-row {
+  flex-flow: row nowrap;
+}
