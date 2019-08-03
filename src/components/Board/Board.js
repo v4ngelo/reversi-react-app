@@ -15,7 +15,7 @@ class Board extends Component {
       const cols = [];
       for (let column = 0; column < 8; column += 1) {
         const owner = getSquareOwner(board, row, column);
-        cols.push(Board.createSquare(row, column, players[owner], row * 8 + column));
+        cols.push(Board.createSquare(row, column, players[owner].diskColor, row * 8 + column));
       }
       rows.push(
         <div className="board-row" key={row}>
@@ -29,11 +29,12 @@ class Board extends Component {
 
 Board.propTypes = {
   board: PropTypes.arrayOf(PropTypes.number).isRequired,
-  players: PropTypes.shape({
-    0: PropTypes.string.isRequired,
-    1: PropTypes.string.isRequired,
-    2: PropTypes.string.isRequired,
-  }).isRequired,
+  players: PropTypes.arrayOf(
+    PropTypes.shape({
+      diskColor: PropTypes.string.isRequired,
+      playerName: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
 export default Board;

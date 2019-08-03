@@ -1,18 +1,41 @@
 import React, { Component } from 'react';
-import { newGameBoard } from '../Board/ReversiBoard';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Board from '../Board/Board';
+import PlayerData from '../PlayerData/PlayerData';
 
-export default class Game extends Component {
-  constructor() {
-    super();
-    this.state = {
-      board: newGameBoard,
-    };
-  }
-
+class Game extends Component {
   render() {
-    const { board } = this.state;
-    const { players } = this.props;
-    return <Board board={board} players={players} />;
+    const whiteTurn = true;
+    return (
+      <div>
+        <Board board={this.props.gameBoard} players={this.props.players} />
+        <PlayerData
+          playerName={this.props.players[1].playerName}
+          playerDiskColor={this.props.players[1].diskColor}
+          takesTurn={whiteTurn}
+        />
+        <PlayerData
+          playerName={this.props.players[2].playerName}
+          playerDiskColor={this.props.players[2].diskColor}
+          takesTurn={false}
+        />
+        <button className="button">Skip Turn</button>
+      </div>
+    );
   }
 }
+
+Game.propTypes = {
+  players: PropTypes.arrayOf(
+    PropTypes.shape({
+      diskColor: PropTypes.string.isRequired,
+      playerName: PropTypes.string,
+    }),
+  ).isRequired,
+  gameBoard: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+};
+
+const mapStateToProps = state => ({ players: state.players, gameBoard: state.gameBoard });
+
+export default connect(mapStateToProps)(Game);
