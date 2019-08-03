@@ -12,8 +12,10 @@ const reducer = (state = initialState, action) => {
       console.log(
         `Changed player name  to: ${action.playerName}, playerNumber: ${action.playerNumber}`,
       );
+      break;
+    default:
+      return state;
   }
-  return state;
 };
 
 export default reducer;
