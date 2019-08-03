@@ -51,12 +51,12 @@
   margin-top: 10%;
 }
 
-.disk-white {
+.white-disk {
   background: #eee;
   border: 1px solid #111;
 }
 
-.disk.black {
+.black-disk {
   background: #111;
 }
 
