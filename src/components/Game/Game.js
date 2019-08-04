@@ -36,6 +36,9 @@ Game.propTypes = {
   gameBoard: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
 };
 
-const mapStateToProps = state => ({ players: state.players, gameBoard: state.gameBoard });
+const mapStateToProps = state => ({
+  players: state.playersReducer.players,
+  gameBoard: state.gameReducer.gameBoard,
+});
 
 export default connect(mapStateToProps)(Game);

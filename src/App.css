@@ -35,6 +35,10 @@
   text-decoration: none;
 }
 
+.isNext {
+  background-color: #ff8000;
+}
+
 .button:focus,
 .button:hover {
   background-color: FireBrick;
