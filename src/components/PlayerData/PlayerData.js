@@ -4,10 +4,10 @@ import { diskClassColorToColor } from '../constants';
 
 const PlayerData = ({ playerName, playerDiskColor, takesTurn }) => {
   const diskColor = diskClassColorToColor[playerDiskColor];
-  // const turnClass = takesTurn ? 'isNext' : '';
+  const turnClass = takesTurn ? 'isNext' : '';
 
   return (
-    <div>
+    <div className={turnClass}>
       <p> Player Name: </p>
       <p>
         {' '}

@@ -6,21 +6,22 @@ import PlayerData from '../PlayerData/PlayerData';
 
 class Game extends Component {
   render() {
-    const whiteTurn = true;
     return (
       <div>
         <Board board={this.props.gameBoard} players={this.props.players} />
         <PlayerData
           playerName={this.props.players[1].playerName}
           playerDiskColor={this.props.players[1].diskColor}
-          takesTurn={whiteTurn}
+          takesTurn={this.props.currentPlayer === 1}
         />
         <PlayerData
           playerName={this.props.players[2].playerName}
           playerDiskColor={this.props.players[2].diskColor}
-          takesTurn={false}
+          takesTurn={this.props.currentPlayer === 2}
         />
-        <button className="button">Skip Turn</button>
+        <button className="button" onClick={this.props.changeTurn}>
+          Skip Turn
+        </button>
       </div>
     );
   }
@@ -34,11 +35,20 @@ Game.propTypes = {
     }),
   ).isRequired,
   gameBoard: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired,
+  currentPlayer: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => ({
   players: state.playersReducer.players,
   gameBoard: state.gameReducer.gameBoard,
+  currentPlayer: state.gameReducer.currentPlayer,
 });
 
-export default connect(mapStateToProps)(Game);
+const mapDispatchToProps = dispatch => ({
+  changeTurn: () => dispatch({ type: 'CHANGE_PLAYER_TURN' }),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Game);
